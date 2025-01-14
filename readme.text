@@ -1,0 +1,15 @@
+Steps:
+
+1 - Set up database with any name
+2 - Register database name in .env file
+3 - run - php artisan migrate
+4 - run - php artisan db:seed (This will give you login credentials in users table with username=faisal & password=123456 login with this creds into admin panel)
+5 - run - php artisan db:seed --class=PaymentOptionsSeeder
+6 - Admin panel login route = admin/login
+7 - Perform CRUD operation to add products
+8 - Edit product to add multiple images and stock quantity of the product
+9 - Go to main product page route is given in the admin panel itself
+10 - Perform addtoCart functionality (Entries will be added to orders and order_items table. note - refer database panel for better understanding)
+11 - It will also reflect into admin panel in orders page where you will get to know the status of cart functionality. (with all details)
+
+All methods in front end is hardcoded, user_id is 1, payment option is hardcoded (two types - card & cod)
