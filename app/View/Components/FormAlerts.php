@@ -3,10 +3,10 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\View\Component;
 
-class form-alerts extends Component
+class FormAlerts extends Component
 {
     /**
      * Create a new component instance.

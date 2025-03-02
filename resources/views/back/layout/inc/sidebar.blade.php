@@ -10,43 +10,22 @@
 
                 <li>
                     <a href="{{ route('admin.dashboard') }}">
-                        <i data-feather="home"></i>
+                        <i class="fas fa-home fa-sm"></i>
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="javascript: void(0);" class="has-arrow">
-                        <i data-feather="grid"></i>
-                        <span data-key="t-apps">Product</span>
-                    </a>
-                    <ul class="sub-menu" aria-expanded="false">
-                        <li>
-                            <a href="{{ route('admin.all-products') }}">
-                                <span data-key="t-calendar">View Products</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.add-product') }}">
-                                <span data-key="t-calendar">Add Product</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="{{ route('admin.order-items') }}">
+                    <a href="{{ route('admin.all-clients') }}">
                         <i data-feather="shopping-cart"></i>
-                        <span data-key="t-cart">Orders</span>
+                        <span data-key="t-cart">Clients</span>
                     </a>
                 </li>
-
                 <li>
-                    <a href="index.html">
-                        <i data-feather="home"></i>
-                        <span data-key="t-dashboard">Products Page</span>
+                    <a href="{{ route('admin.all-invoices') }}">
+                        <i data-feather="shopping-cart"></i>
+                        <span data-key="t-cart">Invoice</span>
                     </a>
                 </li>
-
             </ul>
 
 

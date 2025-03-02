@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CheckoutController;
 
@@ -27,42 +29,28 @@ Route::prefix('admin')->name('admin.')->group(function() {
             Route::post('/logout', 'logoutHandler')->name('logout');
         });
 
-        Route::controller(ProductController::class)->group(function() {
-            // Product Routes
-            Route::get('/all-products', 'viewProdut')->name('all-products');
-            Route::get('/add-product', 'addProduct')->name('add-product');
-            Route::post('/store-product', 'storeProduct')->name('store-product');
-            Route::get('/edit-product', 'editProduct')->name('edit-product');
-            Route::post('/update-product', 'updateProduct')->name('update-product');
+        Route::controller(ClientController::class)->group(function() {
+            Route::get('/all-clients', 'index')->name('all-clients');
+            Route::get('/add-clients', 'create')->name('add-clients');
+            Route::post('/store-client', 'storeCLient')->name('store-client');
+            Route::get('/edit-client', 'editClient')->name('edit-client');
+            Route::post('/update-client', 'updateClient')->name('update-client');
+            Route::post('/delete-client', 'deleteClient')->name('delete-client');
+        });
+        
+        Route::controller(InvoiceController::class)->group(function() {
+            Route::get('/all-invoices', 'index')->name('all-invoices');
+            Route::get('/add-invoice', 'create')->name('add-invoice');
+            Route::post('/store-invoice', 'storeInvoice')->name('store-invoice');
+            Route::get('/invoice/{id}/download', 'downloadPDF')->name('invoice-download');
+            Route::get('/edit-invoice', 'editInvoice')->name('edit-invoice');
+            Route::post('/update-invoice', 'updateInvoice')->name('update-invoice');
 
-            Route::post('/upload-product-images', 'uploadProductImages')->name('upload-product-images');
-            Route::get('/get-product-images', 'getProductImages')->name('get-product-images');
-            Route::post('/delete-product-images', 'deleteProductImages')->name('delete-product-images');
-            Route::post('/delete-product', 'deleteProduct')->name('delete-product');
-
-            Route::get('/cart-items', 'showCartItems')->name('cart-items');
-            Route::get('/order-items', 'showOrderItems')->name('order-items');
+            Route::post('/delete-invoice', 'deleteInvoice')->name('delete-invoice');
         });
     });
 });
 
-
-Route::controller(HomeController::class)->group(function() {
-    Route::get('/', 'homePage')->name('/');
-    Route::get('/product-details', 'productDetails')->name('product-details');
-    Route::get('shoppingcart', 'shoppingCartView')->name('shoppingcart');
-});
-
-Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
-
-Route::get('/checkout-shipping', [CheckoutController::class, 'showShippingForm'])->name('checkout.showShippingForm');
-
-Route::post('/checkout/shipping', [CheckoutController::class, 'handleShippingForm'])->name('checkout.handleShippingForm');
-
-Route::get('/checkout/payment', [CheckoutController::class, 'showPaymentForm'])->name('checkout.showPaymentForm');
-Route::post('/checkout/payment', [CheckoutController::class, 'handlePaymentForm'])->name('checkout.handlePaymentForm');
-
-Route::get('/checkout/confirmation', [CheckoutController::class, 'checkoutConfirmation'])->name('checkout.confirmation');
 
 
 

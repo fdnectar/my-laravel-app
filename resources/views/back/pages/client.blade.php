@@ -23,7 +23,7 @@
         <div class="col-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('admin.add-product') }}" class="btn btn-primary waves-effect waves-light">Add Product</a>
+                    <a href="{{ route('admin.add-clients') }}" class="btn btn-primary waves-effect waves-light">Add Client</a>
                 </div>
                 <div class="card-body">
 
@@ -43,20 +43,17 @@
                                             <th class="sorting sorting_asc" tabindex="0" aria-controls="datatable"
                                                 rowspan="1" colspan="1" style="width: 186.2px;"
                                                 aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending">Product Name</th>
+                                                aria-label="Name: activate to sort column descending">Client Name</th>
                                             <th class="sorting sorting_asc" tabindex="0" aria-controls="datatable"
                                                 rowspan="1" colspan="1" style="width: 186.2px;"
                                                 aria-sort="ascending"
-                                                aria-label="Name: activate to sort column descending">Product SKU</th>
+                                                aria-label="Name: activate to sort column descending">Client Phone</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                                 colspan="1" style="width: 279.2px;"
-                                                aria-label="Position: activate to sort column ascending">Product Image (Click to preview)</th>
+                                                aria-label="Position: activate to sort column ascending">Client Email</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                                 colspan="1" style="width: 136.2px;"
-                                                aria-label="Office: activate to sort column ascending">Product Price</th>
-                                            <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
-                                                colspan="1" style="width: 65.2px;"
-                                                aria-label="Age: activate to sort column ascending">User</th>
+                                                aria-label="Office: activate to sort column ascending">Client Address</th>
                                             <th class="sorting" tabindex="0" aria-controls="datatable" rowspan="1"
                                                 colspan="1" style="width: 129.2px;"
                                                 aria-label="Start date: activate to sort column ascending">Action
@@ -66,32 +63,18 @@
 
 
                                     <tbody>
-                                        @forelse ($products as $key => $product)
+                                        @forelse ($clients as $key => $client)
                                             <tr class="odd">
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td class="dtr-control sorting_1" tabindex="0">{{ $product->product_name }}</td>
-                                                <td>{{ $product->sku }}</td>
+                                                <td class="dtr-control sorting_1" tabindex="0">{{ $client->name }}</td>
+                                                <td>{{ $client->phone }}</td>
+                                                <td>{{ $client->email }}</td>
+                                                <td>{{ $client->address }}</td>
                                                 <td>
-                                                    <div class="d-flex">
-                                                        <a href="/images/products/{{ $product->product_image }}" class="image-popup">
-                                                            <img src="/images/products/{{ $product->product_image }}" alt="" class="rounded avatar-md me-1">
-                                                        </a>
-                                                        <div class="additional-images">
-                                                            @foreach ($product->images as $image)
-                                                                <a href="/images/products/additionals/{{ $image->image }}" class="image-popup">
-                                                                    <img src="/images/products/additionals/{{ $image->image }}" alt="" class="rounded avatar-md">
-                                                                </a>
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>{{ $product->product_price }}</td>
-                                                <td>{{ $product->user->name }}</td>
-                                                <td>
-                                                    <a href="{{ route('admin.edit-product', ['id' => $product->id]) }}" class="text-primary">
+                                                    <a href="{{ route('admin.edit-client', ['id' => $client->id]) }}" class="text-primary">
                                                         <i class="mdi mdi-square-edit-outline" style="font-size: 25px"></i>
                                                     </a>
-                                                    <a href="javascript:;" class="text-danger" id="deleteProductBtn" data-id="{{ $product->id }}">
+                                                    <a href="javascript:;" class="text-danger" id="deleteclientBtn" data-id="{{ $client->id }}">
                                                         <i class="mdi mdi-delete" style="font-size: 25px"></i>
                                                     </a>
                                                 </td>
@@ -117,7 +100,7 @@
 <script>
     $(document).on('click', '#deleteProductBtn', function(e) {
         e.preventDefault();
-        var url = "{{ route('admin.delete-product') }}";
+        var url = "{{ route('admin.delete-client') }}";
         var token = "{{ csrf_token() }}";
         var product_id = $(this).data("id");
 

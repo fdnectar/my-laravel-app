@@ -29,6 +29,7 @@
         <link href="/back/assets/css/bootstrap.min.css" id="bootstrap-style" rel="stylesheet" type="text/css" />
         <!-- Icons Css -->
         <link href="/back/assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="/back/assets/libs/flatpickr/flatpickr.min.css">
         <!-- App Css-->
         <link href="/back/assets/css/app.min.css" id="app-style" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="/extra-assets/summernote/summernote-bs4.min.css">
@@ -88,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div id="danger" class="toast hide fade align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; right: 20px; top: 80px; z-index: 1050;">
+                        <div id="error" class="toast hide fade align-items-center text-white bg-danger border-0" role="alert" aria-live="assertive" aria-atomic="true" style="position: fixed; right: 20px; top: 80px; z-index: 1050;">
                             <div class="d-flex">
                                 <div class="toast-body">
                                     Hello, world! This is a toast message.
@@ -150,6 +151,8 @@
         <!-- Datatable init js -->
         <script src="/back/assets/js/pages/datatables.init.js"></script>
 
+        <link rel="stylesheet" href="/back/assets/libs/flatpickr/flatpickr.min.css">
+
         <script src="/back/assets/js/app.js"></script>
         <script src="/extra-assets/summernote/summernote-bs4.min.js"></script>
         @stack('custom-scripts')
@@ -161,7 +164,33 @@
                     height: 200
                 });
             });
+
+            
         </script>
+
+        <script>
+            // Function to show toasts
+            // var successMessage = "{{ session('success') }}";
+            // var errorMessage = "{{ session('error') }}";
+            
+            // // Function to show toasts
+            // document.addEventListener('DOMContentLoaded', function() {
+            //     // Show success toast if message exists
+            //     if (successMessage) {
+            //         document.getElementById('success').textContent = successMessage;
+            //         var successToast = new bootstrap.Toast(document.getElementById('success-toast'));
+            //         successToast.show();
+            //     }
+                
+            //     if (errorMessage) {
+            //         document.getElementById('error').textContent = errorMessage;
+            //         var errorToast = new bootstrap.Toast(document.getElementById('error-toast'));
+            //         errorToast.show();
+            //     }
+            // });
+        </script>
+
+
 
     </body>
 </html>
